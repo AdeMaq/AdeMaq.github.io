@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adeeba Maqbool — Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --ink2: #3a3835;
+    --ink3: #7a7773;
+    --paper: #faf8f4;
+    --paper2: #f2ede4;
+    --paper3: #e8e1d3;
+    --accent: #c45c2e;
+    --accent2: #1a5c8a;
+    --line: rgba(15,14,13,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(250,248,244,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--ink3); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 5rem; position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 4rem 3rem 4rem 4rem; position: relative; z-index: 2; }
+  .hero-tag { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .hero-tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
+  h1.hero-name { font-family: var(--serif); font-size: clamp(3rem, 5vw, 5.5rem); line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.5rem; }
+  h1.hero-name em { font-style: italic; color: var(--accent); }
+  .hero-desc { font-size: 1.05rem; color: var(--ink2); max-width: 440px; line-height: 1.75; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.75rem 1.6rem; border-radius: 2px; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: all 0.2s; cursor: pointer; }
+  .btn-primary { background: var(--ink); color: var(--paper); border: 1.5px solid var(--ink); }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink3); }
+  .btn-outline:hover { border-color: var(--ink); }
+  .hero-right { display: flex; align-items: center; justify-content: center; padding: 4rem 4rem 4rem 2rem; position: relative; }
+  .hero-profile-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
+  .hero-avatar { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid var(--paper3); box-shadow: 0 0 0 6px var(--paper2); }
+  .hero-graphic-info { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
+  .hero-graphic-name { font-family: var(--serif); font-size: 1.5rem; letter-spacing: -0.02em; color: var(--ink); }
+  .hero-graphic-role { font-family: var(--mono); font-size: 0.7rem; color: var(--ink3); letter-spacing: 0.1em; text-transform: uppercase; }
+  .hero-contact-strip { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; align-items: center; }
+  .hero-contact-strip a { font-family: var(--mono); font-size: 0.7rem; color: var(--ink2); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+  .hero-contact-strip a:hover { color: var(--accent); }
+  .contact-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; }
+  section { padding: 6rem 4rem; }
+  section:nth-child(even) { background: var(--paper2); }
+  .section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; }
+  .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--accent); }
+  h2.section-title { font-family: var(--serif); font-size: clamp(2rem, 3vw, 3rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 3rem; color: var(--ink); }
+  h2.section-title em { font-style: italic; color: var(--accent); }
+  .skills-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border: 1px solid var(--line); }
+  .skill-block { padding: 2rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .skill-block:last-child { border-right: none; }
+  .skill-block-title { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag { background: var(--paper3); color: var(--ink2); font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.65rem; border-radius: 1px; letter-spacing: 0.01em; }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+  .exp-item:first-child { border-top: 1px solid var(--line); }
+  .exp-date { font-family: var(--mono); font-size: 0.72rem; color: var(--ink3); letter-spacing: 0.05em; padding-top: 0.2rem; }
+  .exp-role { font-family: var(--serif); font-size: 1.3rem; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
+  .exp-org { font-size: 0.85rem; color: var(--accent2); font-weight: 500; margin-bottom: 0.75rem; }
+  .exp-bullets { list-style: none; padding: 0; }
+  .exp-bullets li { font-size: 0.9rem; color: var(--ink2); padding: 0.2rem 0 0.2rem 1.2rem; position: relative; line-height: 1.6; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-weight: 300; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; background: var(--line); border: 1px solid var(--line); }
+  .project-card { background: var(--paper); padding: 2rem; display: flex; flex-direction: column; gap: 0.75rem; transition: background 0.2s; }
+  section:nth-child(even) .project-card { background: var(--paper2); }
+  .project-card:hover { background: var(--paper3); }
+  .project-number { font-family: var(--mono); font-size: 0.65rem; color: var(--ink3); letter-spacing: 0.1em; }
+  .project-name { font-family: var(--serif); font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.2; }
+  .project-name a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
+  .project-name a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .project-stack { font-family: var(--mono); font-size: 0.7rem; color: var(--accent2); letter-spacing: 0.06em; }
+  .project-desc { font-size: 0.875rem; color: var(--ink2); line-height: 1.65; flex: 1; }
+  .project-link { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--ink3); text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.25rem; transition: color 0.2s; }
+  .project-link:hover { color: var(--accent); }
+  .edu-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .edu-main-year { font-family: var(--mono); font-size: 0.7rem; color: var(--ink3); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+  .edu-main-degree { font-family: var(--serif); font-size: 2rem; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.5rem; }
+  .edu-main-inst { font-size: 0.9rem; color: var(--accent2); font-weight: 500; margin-bottom: 1.5rem; }
+  .edu-courses-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.75rem; }
+  .edu-courses { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .edu-course { font-size: 0.78rem; color: var(--ink2); border: 1px solid var(--line); padding: 0.2rem 0.6rem; border-radius: 1px; }
+  .edu-side { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 0.5rem; }
+  .edu-side-item { padding: 1.5rem; background: var(--paper3); border-left: 3px solid var(--accent); }
+  .edu-side-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .edu-side-item p { font-size: 0.82rem; color: var(--ink3); }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .contact-big { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 4.5rem); letter-spacing: -0.04em; line-height: 1.05; }
+  .contact-big em { font-style: italic; color: var(--accent); }
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-list li { display: flex; flex-direction: column; gap: 0.15rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
+  .contact-list li:last-child { border-bottom: none; }
+  .contact-list-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+  .contact-list a, .contact-list span { font-size: 0.95rem; color: var(--ink); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .contact-list a:hover { color: var(--accent); }
+  footer { background: var(--ink); color: var(--paper3); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-family: var(--mono); letter-spacing: 0.04em; }
+  footer a { color: var(--paper3); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-tag { animation: fadeUp 0.6s ease both; }
+  h1.hero-name { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-btns { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-right { animation: fadeUp 0.7s 0.25s ease both; }
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 4rem; }
+    .hero-left { padding: 3rem 1.5rem 2rem; }
+    .hero-right { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .edu-block { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .skills-wrapper { grid-template-columns: 1fr 1fr; }
+    .skill-block:nth-child(2n) { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Adeeba Maqbool</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-left">
+    <div class="hero-tag">Software Engineer · Lahore, Pakistan</div>
+    <h1 class="hero-name">Adeeba<br /><em>Maqbool</em></h1>
+    <p class="hero-desc">Full-stack developer and recent BS Software Engineering graduate from PUCIT. Currently building with Angular and .NET MAUI at Devbais — with prior work spanning React, Node.js, and ASP.NET Core, from AI-driven health platforms to peer-to-peer marketplaces.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+      <a href="mailto:adeebamaqbool198@gmail.com" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-profile-wrap">
+      <img src="PASTE_YOUR_BASE64_IMAGE_HERE" alt="Adeeba Maqbool" class="hero-avatar" />
+      <div class="hero-graphic-info">
+        <div class="hero-graphic-name">Adeeba Maqbool</div>
+        <div class="hero-graphic-role">Full-Stack Developer</div>
+        <div class="hero-contact-strip">
+          <a href="https://github.com/AdeMaq" target="_blank"><span class="contact-dot"></span>github.com/AdeMaq</a>
+          <a href="https://www.linkedin.com/in/adeeba-maqbool" target="_blank"><span class="contact-dot"></span>linkedin.com/in/adeeba-maqbool</a>
+          <a href="mailto:adeebamaqbool198@gmail.com"><span class="contact-dot"></span>adeebamaqbool198@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">02 · Skills</div>
+  <h2 class="section-title">What I <em>work with</em></h2>
+  <div class="skills-wrapper">
+    <div class="skill-block">
+      <div class="skill-block-title">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Python</span>
+        <span class="tag">C#</span>
+        <span class="tag">C++</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Kotlin</span>
+        <span class="tag">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Frontend & Mobile</div>
+      <div class="skill-tags">
+        <span class="tag">React.js</span>
+        <span class="tag">Angular</span>
+        <span class="tag">Redux</span>
+        <span class="tag">.NET MAUI</span>
+        <span class="tag">Blazor</span>
+        <span class="tag">Bootstrap</span>
+        <span class="tag">JWT Auth</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Backend</div>
+      <div class="skill-tags">
+        <span class="tag">Node.js</span>
+        <span class="tag">Express.js</span>
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">SignalR</span>
+        <span class="tag">TypeORM</span>
+        <span class="tag">Swagger</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Databases & Tools</div>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Git</span>
+        <span class="tag">Postman</span>
+        <span class="tag">Jira</span>
+        <span class="tag">Figma</span>
+        <span class="tag">Jenkins</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">Visual Studio</span>
+        <span class="tag">Android Studio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">03 · Experience</div>
+  <h2 class="section-title">Where I've <em>worked</em></h2>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">Jun 2026 – Present</div>
+      <div>
+        <div class="exp-role">Software Development Intern</div>
+        <div class="exp-org">Devbais · Onsite, Lahore</div>
+        <ul class="exp-bullets">
+          <li>Working with Angular and .NET MAUI to build and maintain cross-platform application features as part of a professional development team.</li>
+          <li>Collaborating on software projects, contributing to code reviews, testing, and bug fixes within an Agile workflow.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Jun 2025 – Aug 2025</div>
+      <div>
+        <div class="exp-role">Web Development Intern</div>
+        <div class="exp-org">Cybros · Onsite, Lahore</div>
+        <ul class="exp-bullets">
+          <li>Gained hands-on experience with PostgreSQL, MongoDB, TypeORM, React.js, Node.js, and Express.js while contributing to a full-stack web application in a professional onsite team environment.</li>
+          <li>Practiced Agile collaboration, GitHub version control, and API testing with Postman alongside experienced developers.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Jan 2024</div>
+      <div>
+        <div class="exp-role">Teaching Assistant — Computer Networks</div>
+        <div class="exp-org">Punjab University (PUCIT) · Lahore</div>
+        <ul class="exp-bullets">
+          <li>Facilitated lab sessions for 60+ students covering TCP/IP, routing protocols, and Wireshark; achieved a 95% lab completion rate.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">04 · Projects</div>
+  <h2 class="section-title">Things I've <em>built</em></h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-number">01</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/RentAll" target="_blank">RentAll</a></div>
+      <div class="project-stack">.NET · Angular · Stripe</div>
+      <div class="project-desc">Peer-to-peer equipment rental marketplace — list and rent items like tools or cameras, with availability tracking, booking calendars, and Stripe-secured security deposits. JWT authentication and password hashing built in.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/RentAll" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">02 · FYP</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/FYP-Health-Assistant" target="_blank">FitBot — AI Fitness Platform</a></div>
+      <div class="project-stack">ASP.NET Core · React.js · FastAPI · PyTorch</div>
+      <div class="project-desc">4-microservice AI fitness platform for personalized coaching — BMI estimation from a single photo (DenseNet121, R² 0.88–0.92), posture correction, and AI-driven video recommendations.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/FYP-Health-Assistant" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/ChroniclesOnlineApp" target="_blank">Chronicles Online</a></div>
+      <div class="project-stack">.NET MAUI</div>
+      <div class="project-desc">Cross-platform mobile application built during my internship at Devbais, applying .NET MAUI for shared UI across platforms.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/ChroniclesOnlineApp" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">04</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/MyApp" target="_blank">Wise Market Clone</a></div>
+      <div class="project-stack">React.js · Node.js · Express.js · PostgreSQL</div>
+      <div class="project-desc">Full-stack e-commerce platform built during my internship at Cybros — 15+ RESTful API endpoints with Express.js and TypeORM, Redux state management across 8 modular React components.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/MyApp" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">05</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/JobPortal-SkillHunt" target="_blank">Skill Hunt — Job Portal</a></div>
+      <div class="project-stack">ASP.NET MVC · SQL Server · Docker</div>
+      <div class="project-desc">Role-based job portal for employers and seekers, built on Clean Architecture and SOLID principles, deployed via Docker.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/JobPortal-SkillHunt" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">06</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/WeatherApp" target="_blank">Weather App</a></div>
+      <div class="project-stack">Kotlin</div>
+      <div class="project-desc">Native Android weather application built with Kotlin, applying mobile-first design and platform APIs.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/WeatherApp" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">07</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/online-electionsystem" target="_blank">Online Voting System</a></div>
+      <div class="project-stack">C# · SQL Server · Event-Driven Architecture</div>
+      <div class="project-desc">Secure voting platform with multi-factor authentication, role-based access, and real-time result tracking via the Observer design pattern.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/online-electionsystem" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">08</div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/youtube-exercise" target="_blank">Fitness Video Recommendation Engine</a></div>
+      <div class="project-stack">React · Node.js · PostgreSQL · YouTube API</div>
+      <div class="project-desc">Rule-based NLP engine that parses fitness prompts with a relevance-scoring system, using the YouTube API as a fallback for real-time workout recommendations.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/youtube-exercise" target="_blank">View on GitHub →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">05 · Education</div>
+  <h2 class="section-title">My <em>background</em></h2>
+  <div class="edu-block">
+    <div>
+      <div class="edu-main-year">2022 – 2026</div>
+      <div class="edu-main-degree">BS Software<br/>Engineering</div>
+      <div class="edu-main-inst">Punjab University College of Information Technology (PUCIT), Lahore</div>
+      <div class="edu-courses-label">Relevant Coursework</div>
+      <div class="edu-courses">
+        <span class="edu-course">Web Development</span>
+        <span class="edu-course">Data Structures</span>
+        <span class="edu-course">DBMS</span>
+        <span class="edu-course">OOP</span>
+        <span class="edu-course">Machine Learning</span>
+        <span class="edu-course">Computer Vision</span>
+        <span class="edu-course">Information Security</span>
+        <span class="edu-course">Computer Networks</span>
+      </div>
+    </div>
+    <div class="edu-side">
+      <div class="edu-side-item">
+        <h4>Software Development Intern</h4>
+        <p>Devbais · Angular, .NET MAUI · Jun 2026–Present</p>
+      </div>
+      <div class="edu-side-item">
+        <h4>Content Writers Lead</h4>
+        <p>Event Management Society · 2025–2026</p>
+      </div>
+      <div class="edu-side-item">
+        <h4>Event Management</h4>
+        <p>Team member for PUCON (App Odyssey), Cosmocon, and Career Fair</p>
+      </div>
+      <div class="edu-side-item">
+        <h4>Web Dev Internship Certification</h4>
+        <p>PostgreSQL, MongoDB, TypeORM, React.js, Node.js, Express.js · Cybros</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">06 · Contact</div>
+  <div class="contact-layout">
+    <div>
+      <h2 class="contact-big">Let's build<br/>something<br/><em>together.</em></h2>
+      <br/>
+      <a href="mailto:adeebamaqbool198@gmail.com" class="btn btn-primary" style="margin-top:1rem;">Send an Email →</a>
+    </div>
+    <ul class="contact-list">
+      <li>
+        <span class="contact-list-label">Email</span>
+        <a href="mailto:adeebamaqbool198@gmail.com">adeebamaqbool198@gmail.com</a>
+      </li>
+      <li>
+        <span class="contact-list-label">Phone</span>
+        <span>+92-332-8883239</span>
+      </li>
+      <li>
+        <span class="contact-list-label">Location</span>
+        <span>Lahore, Pakistan</span>
+      </li>
+      <li>
+        <span class="contact-list-label">GitHub</span>
+        <a href="https://github.com/AdeMaq" target="_blank">github.com/AdeMaq</a>
+      </li>
+      <li>
+        <span class="contact-list-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/adeeba-maqbool" target="_blank">linkedin.com/in/adeeba-maqbool</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Adeeba Maqbool</span>
+  <span>Lahore, Pakistan · Software Engineer</span>
+  <a href="mailto:adeebamaqbool198@gmail.com">adeebamaqbool198@gmail.com</a>
+</footer>
+
+</body>
+</html>
