@@ -4,6 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Adeeba Maqbool — Software Engineer</title>
+<meta name="description" content="Adeeba Maqbool — .NET &amp; full-stack software engineer (ASP.NET Core, Angular, .NET MAUI) building the JQZ HomeCare healthcare platform at Devbais, Lahore."/>
+<meta property="og:title" content="Adeeba Maqbool — Software Engineer"/>
+<meta property="og:description" content="Full-stack .NET engineer building JQZ HomeCare: Clean Architecture APIs, Angular and .NET MAUI."/>
+<meta name="theme-color" content="#faf8f4"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -141,12 +145,109 @@
     .skills-wrapper { grid-template-columns: 1fr 1fr; }
     .skill-block:nth-child(2n) { border-right: none; }
   }
+
+  /* ===== MOTION & POLISH ===== */
+  ::selection { background: var(--accent); color: var(--paper); }
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); transform-origin: 0 50%; transform: scaleX(0); z-index: 200; }
+  nav { transition: padding 0.3s ease, box-shadow 0.3s ease; }
+  nav.scrolled { padding-top: 0.65rem; padding-bottom: 0.65rem; box-shadow: 0 6px 24px rgba(15,14,13,0.06); }
+  .nav-links a { position: relative; padding-bottom: 3px; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 1.5px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.3s ease; }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--accent); }
+  .btn { transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s, border-color 0.2s; }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(196,92,46,0.22); }
+  .btn:active { transform: translateY(-1px); }
+  /* hero ambience */
+  .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.35; z-index: 0; pointer-events: none; }
+  .hero::before { width: 420px; height: 420px; background: var(--accent); right: -80px; top: 8%; animation: float 12s ease-in-out infinite; }
+  .hero::after { width: 340px; height: 340px; background: var(--accent2); right: 25%; bottom: -120px; opacity: 0.22; animation: float 15s ease-in-out infinite reverse; }
+  @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,30px) scale(1.08); } }
+  .hero-right { z-index: 1; }
+  .hero-avatar { transition: transform 0.5s cubic-bezier(.2,.8,.2,1), box-shadow 0.5s; animation: ring 3.5s ease-in-out infinite; }
+  .hero-avatar:hover { transform: scale(1.05) rotate(-2deg); }
+  @keyframes ring { 0%,100% { box-shadow: 0 0 0 6px var(--paper2), 0 0 0 6px rgba(196,92,46,0); } 50% { box-shadow: 0 0 0 6px var(--paper2), 0 0 0 16px rgba(196,92,46,0.12); } }
+  .typed-line { font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); margin: -1rem 0 1.5rem; min-height: 1.4em; animation: fadeUp 0.6s 0.15s ease both; }
+  .typed-line::after { content: '▍'; margin-left: 2px; animation: blink 1s steps(1) infinite; color: var(--accent); }
+  @keyframes blink { 50% { opacity: 0; } }
+  .status-pill { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 99px; background: var(--paper); color: var(--ink2); margin-top: 1.75rem; animation: fadeUp 0.6s 0.4s ease both; align-self: flex-start; }
+  .status-pill i { width: 7px; height: 7px; border-radius: 50%; background: #2f9e5b; box-shadow: 0 0 0 0 rgba(47,158,91,0.6); animation: pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(47,158,91,0); } 100% { box-shadow: 0 0 0 0 rgba(47,158,91,0); } }
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+  .reveal.in { opacity: 1; transform: none; }
+  .section-label::after { max-width: 0; transition: max-width 0.9s 0.3s ease; }
+  .section-label.in::after { max-width: 40px; }
+  /* stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--paper); }
+  .stat { padding: 2rem 1.5rem; text-align: center; border-right: 1px solid var(--line); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-size: 2.6rem; line-height: 1; color: var(--accent); letter-spacing: -0.03em; }
+  .stat-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-top: 0.5rem; }
+  /* skills + tags */
+  .skill-block { transition: background 0.3s; }
+  .skill-block:hover { background: var(--paper); }
+  .tag { transition: background 0.2s, color 0.2s, transform 0.2s; }
+  .tag:hover { background: var(--accent); color: var(--paper); transform: translateY(-2px); }
+  /* experience timeline */
+  .exp-list { position: relative; }
+  .exp-item { position: relative; transition: background 0.3s, padding-left 0.3s; }
+  .exp-item:hover { background: linear-gradient(90deg, rgba(196,92,46,0.06), transparent); padding-left: 1rem; }
+  .exp-item::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px; background: var(--accent); transform: scaleY(0); transform-origin: 0 0; transition: transform 0.4s ease; }
+  .exp-item:hover::before { transform: scaleY(1); }
+  .badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.55rem; background: var(--accent); color: var(--paper); border-radius: 99px; margin-left: 0.6rem; vertical-align: middle; }
+  /* projects */
+  .project-card { position: relative; transition: background 0.3s, transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s; }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(15,14,13,0.12); z-index: 2; }
+  .project-card::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.4s ease; }
+  .project-card:hover::after { transform: scaleX(1); }
+  @media (min-width: 901px) { .projects-grid .project-card:last-child { grid-column: span 2; } }
+  .project-link span { display: inline-block; transition: transform 0.25s; }
+  .project-link:hover span { transform: translateX(5px); }
+  .project-card.featured { grid-column: 1 / -1; background: var(--ink); color: var(--paper); padding: 3rem; display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem; overflow: hidden; }
+  section:nth-child(even) .project-card.featured, .project-card.featured:hover { background: var(--ink); }
+  .project-card.featured::before { content: ''; position: absolute; width: 380px; height: 380px; right: -100px; top: -120px; border-radius: 50%; background: radial-gradient(circle, rgba(196,92,46,0.45), transparent 70%); pointer-events: none; }
+  .feat-eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #f0a07c; display: flex; align-items: center; gap: 0.5rem; }
+  .feat-eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: #2f9e5b; animation: pulse 2s infinite; }
+  .project-card.featured .project-name { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.05; margin: 0.5rem 0; }
+  .project-card.featured .project-name a:hover { color: #f0a07c; border-bottom-color: #f0a07c; }
+  .project-card.featured .project-desc { color: #d8d3ca; font-size: 0.95rem; flex: none; margin-bottom: 1rem; }
+  .project-card.featured .project-stack { color: #8ec1e6; margin-bottom: 0.5rem; }
+  .project-card.featured .project-link { color: var(--paper); border: 1px solid rgba(250,248,244,0.35); padding: 0.55rem 1.1rem; border-radius: 2px; transition: background 0.25s, color 0.25s, border-color 0.25s; }
+  .project-card.featured .project-link:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .feat-points { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; position: relative; z-index: 1; align-self: center; }
+  .feat-points li { padding: 1rem 1.2rem; border-left: 2px solid var(--accent); background: rgba(250,248,244,0.06); font-size: 0.86rem; color: #e6e1d8; line-height: 1.55; transition: transform 0.3s, background 0.3s; }
+  .feat-points li:hover { transform: translateX(8px); background: rgba(250,248,244,0.11); }
+  .feat-points b { display: block; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: #f0a07c; font-weight: 500; margin-bottom: 0.2rem; }
+  .feat-left { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .edu-side-item { transition: transform 0.3s, box-shadow 0.3s; }
+  .edu-side-item:hover { transform: translateX(8px); box-shadow: -6px 6px 0 rgba(196,92,46,0.18); }
+  .edu-course { transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .edu-course:hover { border-color: var(--accent); color: var(--accent); background: var(--paper); }
+  .contact-list li { transition: padding-left 0.3s; }
+  .contact-list li:hover { padding-left: 0.6rem; }
+  .to-top { position: fixed; right: 1.5rem; bottom: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--paper); border: none; cursor: pointer; font-size: 1.1rem; opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 150; }
+  .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+  .to-top:hover { background: var(--accent); }
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .project-card.featured { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 1.5rem; }
+    .hero::before, .hero::after { opacity: 0.18; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
 
+<div class="progress" id="progress"></div>
 <!-- NAV -->
-<nav>
+<nav id="nav">
   <a href="#" class="nav-logo">Adeeba Maqbool</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -162,27 +263,36 @@
   <div class="hero-left">
     <div class="hero-tag">Software Engineer · Lahore, Pakistan</div>
     <h1 class="hero-name">Adeeba<br /><em>Maqbool</em></h1>
-    <p class="hero-desc">Full-stack developer and recent BS Software Engineering graduate from PUCIT. Currently building with Angular and .NET MAUI at Devbais — with prior work spanning React, Node.js, and ASP.NET Core, from AI-driven health platforms to peer-to-peer marketplaces.</p>
+    <div class="typed-line" id="typed" aria-label="ASP.NET Core, Angular, .NET MAUI"></div>
+    <p class="hero-desc">Full-time Software Developer at Devbais, building <strong>JQZ HomeCare</strong>, a Clean Architecture healthcare platform, with ASP.NET Core, Angular and .NET MAUI. BS Software Engineering graduate from PUCIT with experience from AI-driven health platforms to peer-to-peer marketplaces.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn btn-primary">View Projects ↓</a>
       <a href="mailto:adeebamaqbool198@gmail.com" class="btn btn-outline">Get in Touch</a>
     </div>
+    <div class="status-pill"><i></i>Software Developer @ Devbais · Open to connect</div>
   </div>
   <div class="hero-right">
     <div class="hero-profile-wrap">
-       <img src="DSC_1009.JPG.jpeg" alt="Adeeba Maqbool" class="hero-avatar" />
+       <img src="profile.jpg" alt="Adeeba Maqbool" class="hero-avatar" />
        <div class="hero-graphic-info">
         <div class="hero-graphic-name">Adeeba Maqbool</div>
-        <div class="hero-graphic-role">Full-Stack Developer</div>
+        <div class="hero-graphic-role">.NET · Full-Stack Developer</div>
         <div class="hero-contact-strip">
-          <a href="https://github.com/AdeMaq" target="_blank"><span class="contact-dot"></span>github.com/AdeMaq</a>
-          <a href="https://www.linkedin.com/in/adeeba-maqbool" target="_blank"><span class="contact-dot"></span>linkedin.com/in/adeeba-maqbool</a>
+          <a href="https://github.com/AdeMaq" target="_blank" rel="noopener"><span class="contact-dot"></span>github.com/AdeMaq</a>
+          <a href="https://www.linkedin.com/in/adeeba-maqbool" target="_blank" rel="noopener"><span class="contact-dot"></span>linkedin.com/in/adeeba-maqbool</a>
           <a href="mailto:adeebamaqbool198@gmail.com"><span class="contact-dot"></span>adeebamaqbool198@gmail.com</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="stats">
+  <div class="stat reveal"><div class="stat-num" data-count="9" data-suffix="+">0</div><div class="stat-label">Projects shipped</div></div>
+  <div class="stat reveal" style="--d:.1s"><div class="stat-num" data-count="10" data-suffix="+">0</div><div class="stat-label">Map-link formats parsed</div></div>
+  <div class="stat reveal" style="--d:.2s"><div class="stat-num" data-count="4">0</div><div class="stat-label">Microservices in FitBot</div></div>
+  <div class="stat reveal" style="--d:.3s"><div class="stat-num" data-count="2">0</div><div class="stat-label">Industry roles</div></div>
+</div>
 
 <!-- SKILLS -->
 <section id="skills">
@@ -255,11 +365,13 @@
     <div class="exp-item">
       <div class="exp-date">Jun 2026 – Present</div>
       <div>
-        <div class="exp-role">Software Development Intern</div>
+        <div class="exp-role">Software Developer <span class="badge">Full-Time</span></div>
         <div class="exp-org">Devbais · Onsite, Lahore</div>
         <ul class="exp-bullets">
-          <li>Working with Angular and .NET MAUI to build and maintain cross-platform application features as part of a professional development team.</li>
-          <li>Collaborating on software projects, contributing to code reviews, testing, and bug fixes within an Agile workflow.</li>
+          <li>Converted to full-time after a 3-month internship; own end-to-end feature delivery on JQZ HomeCare, a Clean Architecture healthcare platform (ASP.NET Core, Angular, .NET MAUI).</li>
+          <li>Engineered a multi-source geolocation pipeline supporting 10+ map-link formats with reverse-geocoding fallback, removing manual address entry from field-visit scheduling.</li>
+          <li>Shipped RESTful location and patient-management APIs integrated with Geoapify geocoding, improving data accuracy across admin and practitioner workflows.</li>
+          <li>Built a circular crop overlay (SkiaSharp) and ML Kit face-guided camera capture on a CameraX-backed custom MAUI Handler for ChronicleOnline, resolving Android-specific issues via the Handler/Mapper pattern.</li>
         </ul>
       </div>
     </div>
@@ -269,8 +381,8 @@
         <div class="exp-role">Web Development Intern</div>
         <div class="exp-org">Cybros · Onsite, Lahore</div>
         <ul class="exp-bullets">
-          <li>Gained hands-on experience with PostgreSQL, MongoDB, TypeORM, React.js, Node.js, and Express.js while contributing to a full-stack web application in a professional onsite team environment.</li>
-          <li>Practiced Agile collaboration, GitHub version control, and API testing with Postman alongside experienced developers.</li>
+          <li>Delivered full-stack features with PostgreSQL, MongoDB, TypeORM, React.js, Node.js and Express.js within an Agile sprint cycle.</li>
+          <li>Validated REST endpoints with Postman and collaborated through GitHub version control.</li>
         </ul>
       </div>
     </div>
@@ -293,68 +405,75 @@
   <h2 class="section-title">Things I've <em>built</em></h2>
   <div class="projects-grid">
 
+    <div class="project-card featured reveal">
+      <div class="feat-left">
+        <div class="feat-eyebrow"><i></i>Featured · Current work at Devbais</div>
+        <div class="project-name"><a href="https://github.com/AdeMaq/JQZHomeCreProject" target="_blank" rel="noopener">JQZ HomeCare</a></div>
+        <div class="project-stack">.NET MAUI · ASP.NET Core · Angular · Clean Architecture</div>
+        <div class="project-desc">A home-visit therapy management platform with role-based access for admins and practitioners. Integrates Google Maps geolocation and Firebase Cloud Messaging, with an Azure-ready deployment design.</div>
+        <a class="project-link" href="https://github.com/AdeMaq/JQZHomeCreProject" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
+      </div>
+      <ul class="feat-points">
+        <li><b>Geolocation pipeline</b>Parses 10+ map-link formats with reverse-geocoding fallback, so schedulers no longer type addresses by hand.</li>
+        <li><b>APIs &amp; data</b>RESTful location and patient-management endpoints integrated with Geoapify.</li>
+        <li><b>Cross-platform mobile</b>Custom MAUI Handlers: SkiaSharp circular crop overlay and ML Kit face-guided capture.</li>
+      </ul>
+    </div>
+
     <div class="project-card">
       <div class="project-number">01</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/RentAll" target="_blank">RentAll</a></div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/RentAll" target="_blank" rel="noopener">RentAll</a></div>
       <div class="project-stack">.NET · Angular · Stripe</div>
       <div class="project-desc">Peer-to-peer equipment rental marketplace — list and rent items like tools or cameras, with availability tracking, booking calendars, and Stripe-secured security deposits. JWT authentication and password hashing built in.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/RentAll" target="_blank">View on GitHub →</a>
+      <a class="project-link" href="https://github.com/AdeMaq/RentAll" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
     </div>
 
     <div class="project-card">
       <div class="project-number">02 · FYP</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/FYP-Health-Assistant" target="_blank">FitBot — AI Fitness Platform</a></div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/FYP-Health-Assistant" target="_blank" rel="noopener">FitBot — AI Fitness Platform</a></div>
       <div class="project-stack">ASP.NET Core · React.js · FastAPI · PyTorch</div>
       <div class="project-desc">4-microservice AI fitness platform for personalized coaching — BMI estimation from a single photo (DenseNet121, R² 0.88–0.92), posture correction, and AI-driven video recommendations.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/FYP-Health-Assistant" target="_blank">View on GitHub →</a>
+      <a class="project-link" href="https://github.com/AdeMaq/FYP-Health-Assistant" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
     </div>
 
     <div class="project-card">
       <div class="project-number">03</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/ChroniclesOnlineApp" target="_blank">Chronicles Online</a></div>
-      <div class="project-stack">.NET MAUI</div>
-      <div class="project-desc">Cross-platform mobile application built during my internship at Devbais, applying .NET MAUI for shared UI across platforms.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/ChroniclesOnlineApp" target="_blank">View on GitHub →</a>
+      <div class="project-name"><a href="https://github.com/AdeMaq/MyApp" target="_blank" rel="noopener">Wise Market Clone</a></div>
+      <div class="project-stack">React.js · Node.js · Express.js · PostgreSQL</div>
+      <div class="project-desc">Full-stack e-commerce platform built during my internship at Cybros — 15+ RESTful API endpoints with Express.js and TypeORM, Redux state management across 8 modular React components.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/MyApp" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
     </div>
 
     <div class="project-card">
       <div class="project-number">04</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/MyApp" target="_blank">Wise Market Clone</a></div>
-      <div class="project-stack">React.js · Node.js · Express.js · PostgreSQL</div>
-      <div class="project-desc">Full-stack e-commerce platform built during my internship at Cybros — 15+ RESTful API endpoints with Express.js and TypeORM, Redux state management across 8 modular React components.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/MyApp" target="_blank">View on GitHub →</a>
+      <div class="project-name"><a href="https://github.com/AdeMaq/JobPortal-SkillHunt" target="_blank" rel="noopener">Skill Hunt — Job Portal</a></div>
+      <div class="project-stack">ASP.NET MVC · SQL Server · Docker</div>
+      <div class="project-desc">Role-based job portal for employers and seekers, built on Clean Architecture and SOLID principles, deployed via Docker.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/JobPortal-SkillHunt" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
     </div>
 
     <div class="project-card">
       <div class="project-number">05</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/JobPortal-SkillHunt" target="_blank">Skill Hunt — Job Portal</a></div>
-      <div class="project-stack">ASP.NET MVC · SQL Server · Docker</div>
-      <div class="project-desc">Role-based job portal for employers and seekers, built on Clean Architecture and SOLID principles, deployed via Docker.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/JobPortal-SkillHunt" target="_blank">View on GitHub →</a>
+      <div class="project-name"><a href="https://github.com/AdeMaq/WeatherApp" target="_blank" rel="noopener">Weather App</a></div>
+      <div class="project-stack">Kotlin</div>
+      <div class="project-desc">Native Android weather application built with Kotlin, applying mobile-first design and platform APIs.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/WeatherApp" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
     </div>
 
     <div class="project-card">
       <div class="project-number">06</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/WeatherApp" target="_blank">Weather App</a></div>
-      <div class="project-stack">Kotlin</div>
-      <div class="project-desc">Native Android weather application built with Kotlin, applying mobile-first design and platform APIs.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/WeatherApp" target="_blank">View on GitHub →</a>
+      <div class="project-name"><a href="https://github.com/AdeMaq/online-electionsystem" target="_blank" rel="noopener">Online Voting System</a></div>
+      <div class="project-stack">C# · SQL Server · Event-Driven Architecture</div>
+      <div class="project-desc">Secure voting platform with multi-factor authentication, role-based access, and real-time result tracking via the Observer design pattern.</div>
+      <a class="project-link" href="https://github.com/AdeMaq/online-electionsystem" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
     </div>
 
     <div class="project-card">
       <div class="project-number">07</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/online-electionsystem" target="_blank">Online Voting System</a></div>
-      <div class="project-stack">C# · SQL Server · Event-Driven Architecture</div>
-      <div class="project-desc">Secure voting platform with multi-factor authentication, role-based access, and real-time result tracking via the Observer design pattern.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/online-electionsystem" target="_blank">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-number">08</div>
-      <div class="project-name"><a href="https://github.com/AdeMaq/youtube-exercise" target="_blank">Fitness Video Recommendation Engine</a></div>
+      <div class="project-name"><a href="https://github.com/AdeMaq/youtube-exercise" target="_blank" rel="noopener">Fitness Video Recommendation Engine</a></div>
       <div class="project-stack">React · Node.js · PostgreSQL · YouTube API</div>
       <div class="project-desc">Rule-based NLP engine that parses fitness prompts with a relevance-scoring system, using the YouTube API as a fallback for real-time workout recommendations.</div>
-      <a class="project-link" href="https://github.com/AdeMaq/youtube-exercise" target="_blank">View on GitHub →</a>
+      <a class="project-link" href="https://github.com/AdeMaq/youtube-exercise" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
     </div>
 
   </div>
@@ -383,8 +502,8 @@
     </div>
     <div class="edu-side">
       <div class="edu-side-item">
-        <h4>Software Development Intern</h4>
-        <p>Devbais · Angular, .NET MAUI · Jun 2026–Present</p>
+        <h4>Software Developer (Full-Time)</h4>
+        <p>Devbais · ASP.NET Core, Angular, .NET MAUI · Jun 2026–Present</p>
       </div>
       <div class="edu-side-item">
         <h4>Content Writers Lead</h4>
@@ -426,11 +545,11 @@
       </li>
       <li>
         <span class="contact-list-label">GitHub</span>
-        <a href="https://github.com/AdeMaq" target="_blank">github.com/AdeMaq</a>
+        <a href="https://github.com/AdeMaq" target="_blank" rel="noopener">github.com/AdeMaq</a>
       </li>
       <li>
         <span class="contact-list-label">LinkedIn</span>
-        <a href="https://www.linkedin.com/in/adeeba-maqbool" target="_blank">linkedin.com/in/adeeba-maqbool</a>
+        <a href="https://www.linkedin.com/in/adeeba-maqbool" target="_blank" rel="noopener">linkedin.com/in/adeeba-maqbool</a>
       </li>
     </ul>
   </div>
@@ -442,6 +561,73 @@
   <span>Lahore, Pakistan · Software Engineer</span>
   <a href="mailto:adeebamaqbool198@gmail.com">adeebamaqbool198@gmail.com</a>
 </footer>
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // reveal targets
+  var sel = '.section-label, .section-title, .skill-block, .exp-item, .project-card:not(.featured), .edu-block > div, .edu-side-item, .contact-layout > div, .contact-list li';
+  document.querySelectorAll(sel).forEach(function(el,i){
+    el.classList.add('reveal');
+    el.style.setProperty('--d', ((i % 4) * 0.09) + 's');
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // counters
+  function count(el){
+    var end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null;
+    if(reduce){ el.textContent = end + suf; return; }
+    function step(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/1400,1);
+      el.textContent = Math.round(end*(1-Math.pow(1-p,3))) + suf;
+      if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ count(e.target); cio.unobserve(e.target); } });
+  }, {threshold: 0.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+  // typed role line
+  var typed = document.getElementById('typed');
+  var words = ['ASP.NET Core APIs', 'Angular front-ends', '.NET MAUI mobile apps', 'Clean Architecture systems'];
+  if(reduce){ typed.textContent = '> ' + words[0]; }
+  else { var w=0,c=0,del=false;
+    (function tick(){
+      var word = words[w];
+      typed.textContent = '> ' + word.slice(0,c);
+      if(!del && c===word.length){ del=true; return setTimeout(tick,1600); }
+      if(del && c===0){ del=false; w=(w+1)%words.length; }
+      c += del ? -1 : 1;
+      setTimeout(tick, del ? 35 : 70);
+    })();
+  }
+
+  // scroll: progress, nav state, active link, back-to-top
+  var bar = document.getElementById('progress'), nav = document.getElementById('nav'), top = document.getElementById('toTop');
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function onScroll(){
+    var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (h>0 ? y/h : 0) + ')';
+    nav.classList.toggle('scrolled', y > 20);
+    top.classList.toggle('show', y > 600);
+    var cur = -1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top < innerHeight*0.4) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    ticking = false;
+  }
+  addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  onScroll();
+  top.addEventListener('click', function(){ scrollTo({top:0, behavior: reduce ? 'auto':'smooth'}); });
+})();
+</script>
 </body>
 </html>
